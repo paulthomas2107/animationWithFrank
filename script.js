@@ -18,9 +18,9 @@ class Line {
     ];
     this.lineWidth = Math.floor(Math.random() * 15 + 1);
     this.hue = Math.floor(Math.random() * 360);
-    this.maxLength = 10;
-    this.speedX = 2;
-    this.speedY = 6;
+    this.maxLength = Math.floor(Math.random() * 150 + 10);
+    this.speedX = Math.random() * 1 - 0.5;
+    this.speedY = 7;
     this.lifeSpan = this.maxLength * 10;
     this.timer = 0;
   }
@@ -39,8 +39,8 @@ class Line {
   update() {
     this.timer++;
     if (this.timer < this.lifeSpan) {
-      this.x += this.speedX + Math.random() * 50 - 25;
-      this.y += this.speedY + Math.random() * 50 - 25;
+      this.x += this.speedX + Math.random() * 20 - 10;
+      this.y += this.speedY + Math.random() * 20 - 10;
       this.history.push({
         x: this.x,
         y: this.y,
