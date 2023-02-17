@@ -21,7 +21,7 @@ class Line {
     this.maxLength = Math.floor(Math.random() * 150 + 10);
     this.speedX = Math.random() * 1 - 0.5;
     this.speedY = 7;
-    this.lifeSpan = this.maxLength * 10;
+    this.lifeSpan = this.maxLength * 2;
     this.timer = 0;
   }
   draw(context) {
@@ -69,7 +69,7 @@ class Line {
 }
 
 const linesArray = [];
-const numberOfLines = 20;
+const numberOfLines = 100;
 for (let i = 0; i < numberOfLines; i++) {
   linesArray.push(new Line(canvas));
 }
