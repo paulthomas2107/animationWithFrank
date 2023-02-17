@@ -19,6 +19,8 @@ class Line {
     this.lineWidth = Math.floor(Math.random() * 15 + 1);
     this.hue = Math.floor(Math.random() * 360);
     this.maxLength = 10;
+    this.speedX = 2;
+    this.speedY = 15;
   }
   draw(context) {
     context.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
@@ -32,8 +34,8 @@ class Line {
     context.stroke();
   }
   update() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
+    this.x += this.speedX + Math.random() * 50 - 25;
+    this.y += this.speedY + Math.random() * 50 - 25;
     this.history.push({
       x: this.x,
       y: this.y,
@@ -45,7 +47,7 @@ class Line {
 }
 
 const linesArray = [];
-const numberOfLines = 1;
+const numberOfLines = 20;
 for (let i = 0; i < numberOfLines; i++) {
   linesArray.push(new Line(canvas));
 }
