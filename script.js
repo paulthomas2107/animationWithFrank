@@ -45,7 +45,7 @@ class Line {
         y: this.y,
       },
     ];
-    this.lineWidth = Math.floor(Math.random() * 50 + 1);
+    this.lineWidth = Math.floor(Math.random() * 15 + 1);
     this.hue = Math.floor(Math.random() * 360);
     this.maxLength = Math.floor(Math.random() * 150 + 10);
     this.speedX = Math.random() * 1 - 0.5;
@@ -54,7 +54,7 @@ class Line {
     this.timer = 0;
   }
   draw(context) {
-    //context.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
+    context.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
     context.lineWidth = this.lineWidth;
     context.beginPath();
     context.moveTo(this.history[0].x, this.history[0].y);
