@@ -5,6 +5,10 @@ canvas.height = 900;
 
 // Global Canvas Settings
 
+ctx.shadowOffsetX = 2;
+ctx.shadowOffsetY = 2;
+ctx.shadowColor = 'black';
+
 const gradient1 = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
 gradient1.addColorStop('0.2', 'pink');
 gradient1.addColorStop('0.3', 'red');
@@ -28,7 +32,7 @@ const gradient2 = ctx.createRadialGradient(
 gradient2.addColorStop('0.2', 'green');
 gradient2.addColorStop('0.5', 'red');
 gradient2.addColorStop('0.8', 'blue');
-ctx.strokeStyle = pattern1;
+ctx.strokeStyle = gradient1;
 
 class Line {
   constructor(canvas) {
@@ -41,7 +45,7 @@ class Line {
         y: this.y,
       },
     ];
-    this.lineWidth = Math.floor(Math.random() * 15 + 1);
+    this.lineWidth = Math.floor(Math.random() * 50 + 1);
     this.hue = Math.floor(Math.random() * 360);
     this.maxLength = Math.floor(Math.random() * 150 + 10);
     this.speedX = Math.random() * 1 - 0.5;
@@ -94,7 +98,7 @@ class Line {
 }
 
 const linesArray = [];
-const numberOfLines = 200;
+const numberOfLines = 50;
 for (let i = 0; i < numberOfLines; i++) {
   linesArray.push(new Line(canvas));
 }
