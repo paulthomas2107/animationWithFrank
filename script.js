@@ -8,19 +8,22 @@ ctx.lineWidth = 10;
 ctx.strokeStyle = 'magenta';
 
 class Line {
-  constructor() {
+  constructor(canvas) {
+    this.canvas = canvas;
     this.startX = Math.random() * canvas.width;
     this.startY = Math.random() * canvas.height;
     this.endX = Math.random() * canvas.width;
     this.endY = Math.random() * canvas.height;
+    this.lineWidth = Math.floor(Math.random() * 15 + 1);
   }
-  draw() {
-    ctx.beginPath();
-    ctx.moveTo(this.startX, this.startY);
-    ctx.lineTo(this.endX, this.endY);
-    ctx.stroke();
+  draw(context) {
+    context.lineWidth = this.lineWidth;
+    context.beginPath();
+    context.moveTo(this.startX, this.startY);
+    context.lineTo(this.endX, this.endY);
+    context.stroke();
   }
 }
 
-const line1 = new Line();
-line1.draw();
+const line1 = new Line(canvas);
+line1.draw(ctx);
