@@ -8,10 +8,14 @@ canvas.height = 900;
 class Line {
   constructor(canvas) {
     this.canvas = canvas;
-    this.startX = Math.random() * canvas.width;
-    this.startY = Math.random() * canvas.height;
-    this.endX = Math.random() * canvas.width;
-    this.endY = Math.random() * canvas.height;
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.history = [
+      {
+        x: this.x,
+        y: this.y,
+      },
+    ];
     this.lineWidth = Math.floor(Math.random() * 15 + 1);
     this.hue = Math.floor(Math.random() * 360);
   }
@@ -19,8 +23,18 @@ class Line {
     context.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
     context.lineWidth = this.lineWidth;
     context.beginPath();
-    context.moveTo(this.startX, this.startY);
-    context.lineTo(this.endX, this.endY);
+    context.moveTo(this.history[0].x, this.history[0].y);
+    for (let i = 0; i < 3; i++) {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.history.push({
+        x: this.x,
+        y: this.y,
+      });
+    }
+    for (let i = 0; i < this.history.length; i++) {
+      context.lineTo(this.history[i].x, this.history[i].y);
+    }
     context.stroke();
   }
 }
