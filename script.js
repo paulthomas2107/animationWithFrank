@@ -4,8 +4,6 @@ canvas.width = 700;
 canvas.height = 900;
 
 // Global Canvas Settings
-ctx.lineWidth = 10;
-ctx.strokeStyle = 'magenta';
 
 class Line {
   constructor(canvas) {
@@ -15,8 +13,10 @@ class Line {
     this.endX = Math.random() * canvas.width;
     this.endY = Math.random() * canvas.height;
     this.lineWidth = Math.floor(Math.random() * 15 + 1);
+    this.hue = Math.floor(Math.random() * 360);
   }
   draw(context) {
+    context.strokeStyle = 'hsl(' + this.hue + ', 100%, 50%)';
     context.lineWidth = this.lineWidth;
     context.beginPath();
     context.moveTo(this.startX, this.startY);
@@ -25,5 +25,9 @@ class Line {
   }
 }
 
-const line1 = new Line(canvas);
-line1.draw(ctx);
+const linesArray = [];
+const numberOfLines = 1;
+for (let i = 0; i < numberOfLines; i++) {
+  linesArray.push(new Line(canvas));
+}
+linesArray.forEach((line) => line.draw(ctx));
